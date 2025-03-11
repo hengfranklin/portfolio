@@ -1,5 +1,8 @@
 title: Franklin Heng
 logo: assets/imgs/profile_pic.jpeg
-description: "Computer Vision Engineer,&nbsp;Prev <a href='https://www.linkedin.com/company/running-tide/' target='_blank'>Running Tide</a>"
+description: |
+  Computer Vision Engineer leveraging AI for social impact  
+  Prev: <a href="https://www.linkedin.com/company/runningtide/posts/?feedView=all</a>, 
+  <a href="https://scvrb-core.ucsf.edu/~fahy/" target="_blank">UCSF</a>
 show_downloads: false 
 theme: jekyll-theme-minimal
