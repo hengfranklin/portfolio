@@ -1,6 +1,3 @@
-## Education 
-B.A. Computer Science, UC Berkeley, 2018 
-
 ## Projects 
 
 ### Running Tide
@@ -22,6 +19,9 @@ Plant Width Estimation Using Agricultural Robotics
 Brain Age Prediction From Brain CT Scans
 
 Attention Level Prediction Using EEG Scans
+
+## Education 
+B.A. Computer Science, UC Berkeley, 2018 
 
 ## Publications
 
