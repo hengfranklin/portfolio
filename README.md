@@ -1,4 +1,4 @@
-## Projects 
+## I. Projects 
 
 ### Running Tide
 Detection and Tracking of Biomass In The Ocean From Camera Buoy Sensors 
@@ -20,10 +20,10 @@ Brain Age Prediction From Brain CT Scans
 
 Attention Level Prediction Using EEG Scans
 
-## Education 
+## II. Education 
 B.A. Computer Science, UC Berkeley, 2018 
 
-## Publications
+## III. Publications
 
 [\[1\]](https://doi.org/10.1172/jci.insight.174124) Persistent mucus plugs in proximal airways are consequential for airflow limitation in asthma. JCI Insight. 2023.
     
