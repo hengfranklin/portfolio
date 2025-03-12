@@ -1,4 +1,4 @@
-## I. Projects 
+## I. Computer Vision / ML Projects 
 
 ### Running Tide
 Detection and Tracking of Biomass In The Ocean From Camera Buoy Sensors 
