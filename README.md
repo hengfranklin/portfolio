@@ -1,4 +1,4 @@
-## <span style="color:#2a7ae2;">I. Computer Vision / ML Projects</span>
+<h2 style="color:#2a7ae2;">I. Computer Vision / ML Projects</h2>
 
 ### Running Tide
 * Detection and Tracking of Biomass In The Ocean From Camera Buoy Sensors 
