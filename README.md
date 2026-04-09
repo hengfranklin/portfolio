@@ -1,4 +1,4 @@
-<h1 align="center">Hi, I'm Franklin</h1>
+<h1 align="center">Hi, I'm Franklin 👋</h1>
 
 <p align="center">
   <img src="imgs/banner_photo.jpeg" alt="banner" width="100%"/>
