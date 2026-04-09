@@ -183,7 +183,7 @@ Consolidates fragmented NY energy efficiency programs (Smartcharge NY, SCERP, IR
 
 ## Earlier work
 
-🛰️ **NASA JPL** — Researched image-processing methods to align and segment multi-wavelength infrared sensor arrays.
+🛰️ **NASA JPL** — Researched image-processing methods to align and segment multi-wavelength infrared sensor arrays. 📄 [Paper 1](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9845/984505/Cross-correlation-and-image-alignment-for-multi-band-IR-sensors/10.1117/12.2224694.short) · [Paper 2](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/10203/1/Intelligent-multi-spectral-IR-image-segmentation/10.1117/12.2262730.short)
 
 📱 **Samsung SARC** — Researched mobile object-detection architectures and contributed to a C++ GPU simulator modeling Samsung's mobile GPU.
 
