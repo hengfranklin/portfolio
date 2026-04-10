@@ -109,7 +109,7 @@ Co-founded a startup to make spirometry accessible to patients with ALS and othe
 
 **Stack:** Intel RealSense · Cubemos skeleton tracking · OpenCV · SciPy · Pixel2Mesh · CNN+LSTM (Keras). IRB-approved patient study at UCSF Pulmonary Function Lab.
 
-📂 [Repo](Breathily/)
+📂 [Repo](https://github.com/hengfranklin/Breathily)
 
 ---
 
@@ -137,7 +137,7 @@ Co-founded a startup to make spirometry accessible to patients with ALS and othe
 
 End-to-end **SDXL + ControlNet-Union + custom LoRAs** on **NVIDIA Triton + TensorRT** (H100). Owned the GPU inference stack, LoRA training pipeline, and MLOps glue. Multi-LoRA blending, TensorRT compilation, zero-downtime hot-swap via Hyperdisk ML on GKE.
 
-📂 [Repo](mtd-portfolio/)
+📂 [Repo](https://github.com/hengfranklin/mtd-portfolio)
 
 </td>
 <td width="50%" valign="top">
@@ -148,7 +148,7 @@ End-to-end **SDXL + ControlNet-Union + custom LoRAs** on **NVIDIA Triton + Tenso
 
 Civic AI that finds public records and drafts legally optimized FOIA / FOIL / CPRA / PIA requests. **Anti-hallucination drafting** — Claude writes only from verified statute text, eCFR regulations, and MuckRock outcomes.
 
-📂 [Repo](FOIA-Fluent/) · 🔗 [Website](https://www.foiafluent.com)
+📂 [Repo](https://github.com/dssg-nyc/FOIA-Fluent) · 🔗 [Website](https://www.foiafluent.com)
 
 </td>
 </tr>
@@ -173,7 +173,7 @@ Live, source-verified timeline trackers for the *KGM v. Meta* and *Torrez v. Met
 
 Consolidates fragmented NY energy efficiency programs (Smartcharge NY, SCERP, IRA 30C), surfaces eligibility, and gives utilities a dashboard targeting underutilized programs and grid congestion.
 
-📂 [Repo](gridtech-hack/) · 🔗 [Website](https://gridtech.vercel.app/)
+📂 [Repo](https://github.com/hengfranklin/gridtech-hack) · 🔗 [Website](https://gridtech.vercel.app/)
 
 </td>
 </tr>
