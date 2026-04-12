@@ -129,7 +129,7 @@ Co-founded a startup to make spirometry accessible to patients with ALS and othe
 
 <table>
 <tr>
-<td width="50%" valign="top">
+<td width="33%" valign="top">
 
 #### Make The Dot
 
@@ -140,7 +140,7 @@ End-to-end **SDXL + ControlNet-Union + custom LoRAs** on **NVIDIA Triton + Tenso
 📂 [Repo](https://github.com/hengfranklin/mtd-portfolio)
 
 </td>
-<td width="50%" valign="top">
+<td width="33%" valign="top">
 
 #### FOIA Fluent
 
@@ -151,20 +151,7 @@ Civic AI that finds public records and drafts legally optimized FOIA / FOIL / CP
 📂 [Repo](https://github.com/dssg-nyc/FOIA-Fluent) · 🔗 [Website](https://www.foiafluent.com)
 
 </td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-#### Litigation Tracker
-
-<img src="imgs/portfolio/meta-trials.png" width="100%"/>
-
-Live, source-verified timeline trackers for the *KGM v. Meta* and *Torrez v. Meta* social-media-addiction trials. Cron + Tavily + Claude with **zero hallucinated content**.
-
-🔗 [Website](https://meta-trials.vercel.app)
-
-</td>
-<td width="50%" valign="top">
+<td width="33%" valign="top">
 
 #### GridTech
 🥈 *Cross-Columbia GridTech Hackathon 2026*
