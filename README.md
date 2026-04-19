@@ -29,7 +29,10 @@
 
 <img src="imgs/portfolio/p03_8.png" width="100%" alt="Offshore substrate detection with bounding boxes"/>
 
-Airflow-triggered pipeline pulls images from custom **ocean-buoy cameras**, uses **Mask-RCNN** to segment wood chips, fits pixel-area to an **exponential decay sink-rate curve** for the carbon-verification dashboard. Dockerized, orchestrated with Cloud Composer.
+Verifying ocean-carbon removal requires an empirical sinking curve for each batch of biomaterial deployed at sea. The pipeline pulls imagery from custom ocean-buoy cameras, filters noisy frames (fog, occlusion, bubbles) through an **AutoML CNN**, then segments wood chips with **Mask-RCNN**, chosen for per-pixel accuracy on our ~2,000-image dataset. Pixel-area over time is fit to an **exponential-decay curve** that feeds the carbon-verification dashboard.
+
+- **Stack:** Mask-RCNN · AutoML CNN · Cloud Composer / Airflow · Docker
+- **Eval:** IoU + mAP on segmentation; curves reviewed by the oceanography team
 
 </td>
 <td width="33%" valign="top">
@@ -38,7 +41,24 @@ Airflow-triggered pipeline pulls images from custom **ocean-buoy cameras**, uses
 
 <img src="imgs/portfolio/p11_1.png" width="100%" alt="Kelp 3D phenotyping pipeline"/>
 
-Rotating-blade camera rig → thresholding → **COLMAP** point cloud → **Open3D** outlier removal → voxelization → convex hull volume → biomass regression. Fine-tuned **SAM ViT** to 90% IoU; regression predicts biomass within **1 g**.
+Generating 3D reconstructions of kelp from multi-view imagery lets researchers compute volumetric and morphological measurements. A **Structure-from-Motion** pipeline was the right fit because our controlled imaging rig gave the high image overlap and repeatability SfM needs.
+
+**Pipeline:**
+- **COLMAP** — sparse point cloud from multi-view RGB
+- **Metashape** — dense cloud + photorealistic texture
+- **Open3D** — outlier removal, voxelization, convex-hull volume
+
+**Eval:** reconstruction quality gauged by bundle-adjustment reprojection error.
+
+**Hardware setup**
+
+<img src="imgs/portfolio/p10_1.png" width="100%" alt="Kelp imaging rig — industrial RGB camera, linear rail, color calibration card, rotating sample"/>
+
+- High-resolution industrial RGB camera on a **linear rail** for flexible positioning
+- **Color-calibration card** in every capture for cross-session colorimetry
+- Controlled lighting to minimize specular highlights on wet blades
+- **Tunable sample rotation speed** to adjust SfM overlap
+- Automatic image upload from rig → cloud → reconstruction job
 
 📄 [*NAPPN 2022*](https://www.authorea.com/users/510851/articles/588338-nappn-annual-conference-abstract-computer-vision-based-phenotyping-approaches-in-the-brown-macroalgae-saccharina-latissima)
 
@@ -49,7 +69,10 @@ Rotating-blade camera rig → thresholding → **COLMAP** point cloud → **Open
 
 <img src="imgs/portfolio/shelfish.jpg" width="100%" alt="Robotic shellfish counter oyster detection"/>
 
-Faster-RCNN fine-tuned to **>90% accuracy at 0.125s/image** on images with ~1,000 shellfish as small as 2×2 px. Custom post-processing to refine boxes for the smallest detections.
+Each image from our robotic harvesting platform held ~1,000 shellfish, some as small as 2×2 px. I fine-tuned **Faster-RCNN** because its two-stage design let us tune anchor-box scales specifically for that small-object regime. A custom post-processing pass refines the smallest detections before they hit the counter.
+
+- **Performance:** >90% accuracy at 0.125 s/image
+- **Eval:** classification cross-entropy, bbox L1/L2, absolute counting error vs. human counts
 
 </td>
 </tr>
@@ -67,7 +90,15 @@ Faster-RCNN fine-tuned to **>90% accuracy at 0.125s/image** on images with ~1,00
 
 <img src="imgs/portfolio/p13_1.png" width="100%" alt="Mucus plug segmentation in chest CT"/>
 
-Intensity-threshold lung segmentation → region growing → **GK fuzzy clustering** → **marching cubes** 3D mesh → PCA cylinder fitting. Plugs classified as **stubby (≤12mm) vs. stringy (>12mm)**, deriving a **novel airway-resistance score** correlated with FEV₁ decline across 580+ patients.
+Mucus plugs in lung airways are a key driver of airflow limitation in asthma, but counting and measuring them from CT had been a manual radiology task. I built an automated pipeline that detects, segments, and measures plugs in 3D, then maps each one back to its airway generation.
+
+**Pipeline:**
+- Intensity-threshold lung segmentation + region growing to isolate airways
+- **GK fuzzy clustering** for plug isolation, chosen over hard thresholding because it handles partial-volume effects at tissue boundaries
+- **Mask-RCNN** for per-plug instance segmentation so each plug can be counted individually
+- **Marching cubes** → 3D mesh; **PCA cylinder fitting** for length and width measurement
+
+Plugs were classified **stubby (≤12 mm) vs. stringy (>12 mm)** and used to derive a novel airway-resistance score that correlated with FEV₁ decline across **580+ patients**. Segmentation evaluated on IoU + mAP; outputs reviewed by the radiology team.
 
 📄 [*JCI Insight* (2023)](https://insight.jci.org/articles/view/174124)
 
@@ -105,9 +136,16 @@ Custom **3D CNN** on head CT with volumetric **regional segmentation** (8 region
   <sub>▶️ <a href="https://www.youtube.com/watch?v=MaBf3D1GvQA">Watch the demo</a></sub>
 </p>
 
-Co-founded a startup to make spirometry accessible to patients with ALS and other neuromuscular diseases who **physically can't** form a seal around a traditional spirometer mouthpiece. We replaced the mouthpiece with **Intel RealSense depth cameras** and computer vision — estimating FVC, FEV1, PEF and the full PFT panel from chest wall movement alone.
+Patients with ALS and other neuromuscular diseases often can't form a seal around a traditional spirometer mouthpiece, which makes standard pulmonary function testing impossible for them. We co-founded Breathily to make spirometry mouthpiece-free: **Intel RealSense depth cameras** capture chest-wall movement, and computer vision converts that movement into the full PFT panel (FVC, FEV1, PEF).
 
-**Stack:** Intel RealSense · Cubemos skeleton tracking · OpenCV · SciPy · Pixel2Mesh · CNN+LSTM (Keras). IRB-approved patient study at UCSF Pulmonary Function Lab.
+**How it works:**
+- **Cubemos + MediaPipe** for real-time pose estimation, used to locate the chest-wall ROI on each frame
+- **RealSense SDK** for depth-to-metric conversion, native to the sensor so no external calibration is needed
+- A scaling factor (reference spirometer volume ÷ raw chest displacement) converts the 1-D breathing waveform into L and L/s
+
+**Stack:** Intel RealSense · Cubemos · OpenCV · SciPy · Pixel2Mesh · CNN+LSTM (Keras)
+
+**Eval:** correlation coefficient, RMSE, and MAE against a paired spirometer in an **IRB-approved patient study at UCSF Pulmonary Function Lab**.
 
 📂 [Repo](https://github.com/hengfranklin/Breathily)
 
@@ -121,7 +159,7 @@ Co-founded a startup to make spirometry accessible to patients with ALS and othe
 
 **Sorghum stem width estimation** from a moving robotic platform. Faster-RCNN stem detection → Wiener filter → Canny edges + morphological ops → RANSAC boundary fit → metric width via paired depth image.
 
-📄 *Sahiner, Heng, Balamurugan, Zakhor* — **"In Situ Width Estimation of Biofuel Plant Stems"**, Electronic Imaging 2019
+📄 [*Sahiner, Heng, Balamurugan, Zakhor* — **"In Situ Width Estimation of Biofuel Plant Stems"**, Electronic Imaging 2019](https://library.imaging.org/ei/articles/31/13/art00009)
 
 ---
 
@@ -135,7 +173,16 @@ Co-founded a startup to make spirometry accessible to patients with ALS and othe
 
 <img src="mtd-portfolio/docs/assets/output-hero.png" width="100%"/>
 
-End-to-end **SDXL + ControlNet-Union + custom LoRAs** on **NVIDIA Triton + TensorRT** (H100). Owned the GPU inference stack, LoRA training pipeline, and MLOps glue. Multi-LoRA blending, TensorRT compilation, zero-downtime hot-swap via Hyperdisk ML on GKE.
+Designers needed photorealistic garment renders from a hand sketch, a color, and a fabric spec, without retraining a model each time a new material was added. I owned the end-to-end pipeline: base model, control signals, LoRA training, and GPU serving.
+
+**Model stack:**
+- **SDXL Juggernaut v10** as the base, chosen for its curated photorealistic training data
+- **ControlNet-Union** for structural adherence to the sketch
+- **Custom LoRAs** chosen over IP-adapters and full fine-tuning because they support weighted blending at inference (e.g. *faded = light @0.9 + bleach @0.3*) without retraining
+
+**Serving:** NVIDIA Triton + TensorRT on H100, with multi-LoRA blending and zero-downtime hot-swap via Hyperdisk ML on GKE.
+
+**Eval:** weighted-MSE noise-prediction loss during training; an in-house A/B tool where the design team rated experimental vs. production outputs (worse / same / better) for promotion decisions.
 
 📂 [Repo](https://github.com/hengfranklin/mtd-portfolio)
 
@@ -144,7 +191,7 @@ End-to-end **SDXL + ControlNet-Union + custom LoRAs** on **NVIDIA Triton + Tenso
 
 #### FOIA Fluent
 
-<img src="FOIA-Fluent/docs/images/homepage_update.png" width="100%"/>
+<img src="FOIA-Fluent/docs/images/homepage.png" width="100%"/>
 
 Civic AI that finds public records and drafts legally optimized FOIA / FOIL / CPRA / PIA requests. **Anti-hallucination drafting** — Claude writes only from verified statute text, eCFR regulations, and MuckRock outcomes.
 
@@ -199,6 +246,17 @@ Consolidates fragmented NY energy efficiency programs (Smartcharge NY, SCERP, IR
 | **Serving & MLOps** | NVIDIA Triton · TensorRT · Docker · GKE · Vertex AI · Cloud Run · Cloud Composer / Airflow · Celery |
 | **Web** | FastAPI · Next.js · Supabase · Postgres · Redis |
 | **Languages** | Python · C++ · MATLAB · TypeScript |
+
+---
+
+## VLM & emerging tools I'm tracking
+
+| | |
+|---|---|
+| **Transformer-based detectors** | RF-DETR (DINOv2 backbone, CNN feature extractor) · YOLOv12 (attention-integrated) |
+| **Open-source VLMs** | Qwen3-VL · Cosmos Reasoning (physics/robotics-tuned on Qwen3-VL) · YOLO-World (CLIP text encoder) · Gemma 3 |
+| **Proprietary VLMs** | Gemini 2.5 · Claude Sonnet 4 / Opus · GPT-4 · OpenAI o3 |
+| **Architecture patterns** | Mixture of Experts (MoE) — sparse gating/routing over feed-forward layers; cuts inference cost but introduces routing instability and expert-imbalance challenges |
 
 ---
 
