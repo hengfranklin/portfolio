@@ -139,9 +139,11 @@ Decoding attentional engagement from raw EEG needed a representation that stayed
 <p align="center">
   <a href="https://www.youtube.com/watch?v=MaBf3D1GvQA">
     <img src="https://img.youtube.com/vi/MaBf3D1GvQA/maxresdefault.jpg" width="850" alt="Breathily demo video"/>
-  </a>
-  <br/><sub>▶️ <a href="https://www.youtube.com/watch?v=MaBf3D1GvQA">Watch the demo</a></sub>
-  <br/>
+  </a><br/>
+  <sub>▶️ <a href="https://www.youtube.com/watch?v=MaBf3D1GvQA">Watch the demo</a></sub>
+</p>
+
+<p align="center">
   <img src="imgs/portfolio/breathily_pipeline.png" width="850" alt="Clinical study data collection pipeline: depth image → skeleton tracking → chest region → segmented regions → VISION vs. spirometry curves"/><br/>
   <sub>Clinical-study data-collection pipeline: depth + color → skeleton tracking → chest-region segmentation → segment-wise depth signals → Breathily vs. spirometer curves</sub>
 </p>
