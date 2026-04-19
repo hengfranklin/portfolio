@@ -312,6 +312,7 @@ Consolidates fragmented NY energy efficiency programs (Smartcharge NY, SCERP, IR
 
 - 🚑 **EMT** — National Registry of EMTs (2024)
 - 🤿 **Open Water Scuba Diver** — SSI (2022)
+- 🦖 All CV/ML projects above (except the ones listed under Full Stack AI Engineering) were built pre-agentic-AI.
 
 ---
 
