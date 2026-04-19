@@ -109,7 +109,10 @@ Plugs were classified **stubby (≤12 mm) vs. stringy (>12 mm)** and used to der
 
 <img src="imgs/portfolio/brain_age_p3.png" width="100%" alt="Brain age regional segmentation pipeline"/>
 
-Custom **3D CNN** on head CT with volumetric **regional segmentation** (8 regions per scan). GLM analysis correlating predicted brain age gap against a systemic disease panel.
+The gap between a patient's predicted "brain age" and their actual age can be a signal of underlying systemic disease. I trained a custom **3D CNN** on brain CT scans to predict brain age, then analyzed the prediction gap against a panel of systemic conditions.
+
+- **Model:** 3D CNN with volumetric regional segmentation, 8 regions per scan
+- **Analysis:** GLM correlating predicted brain-age gap against the systemic disease panel
 
 </td>
 <td width="33%" valign="top">
@@ -118,7 +121,11 @@ Custom **3D CNN** on head CT with volumetric **regional segmentation** (8 region
 
 <img src="imgs/portfolio/nmf_eeg_p16.png" width="100%" alt="NMF coefficient analysis with scalp topography maps"/>
 
-**NMF decomposition** of Morlet wavelet spectrograms from 64-channel EEG. Coefficient analysis reveals distinct **scalp topography patterns** between engaged and non-engaged states.
+Decoding attentional engagement from raw EEG needed a representation that stayed interpretable across subjects. **NMF** was chosen because its non-negative parts-based decomposition exposes coefficient patterns that can be mapped directly onto the scalp.
+
+- **Pre-processing:** Morlet wavelet spectrograms from 64-channel EEG
+- **Decomposition:** NMF across trials
+- **Findings:** coefficient analysis reveals distinct scalp-topography patterns between engaged and non-engaged states
 
 </td>
 </tr>
@@ -157,7 +164,14 @@ Patients with ALS and other neuromuscular diseases often can't form a seal aroun
   <img src="imgs/portfolio/p06_2.png" width="850" alt="Sorghum stem width estimation pipeline"/>
 </p>
 
-**Sorghum stem width estimation** from a moving robotic platform. Faster-RCNN stem detection → Wiener filter → Canny edges + morphological ops → RANSAC boundary fit → metric width via paired depth image.
+Estimated **sorghum stem width** from video captured by a moving robotic platform. **Faster-RCNN** locates stems in each frame, then an edge-based refinement stage recovers the stem boundary before depth-based metric conversion.
+
+**Pipeline:**
+- **Faster-RCNN** for stem detection
+- **Wiener filter** for pre-edge noise reduction
+- **Canny edges + morphological operations** to isolate stem boundaries
+- **RANSAC** for a clean boundary fit
+- Metric width computed from the paired **depth image**
 
 📄 [*Sahiner, Heng, Balamurugan, Zakhor* — **"In Situ Width Estimation of Biofuel Plant Stems"**, Electronic Imaging 2019](https://library.imaging.org/ei/articles/31/13/art00009)
 
