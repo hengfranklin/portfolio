@@ -139,8 +139,11 @@ Decoding attentional engagement from raw EEG needed a representation that stayed
 <p align="center">
   <a href="https://www.youtube.com/watch?v=MaBf3D1GvQA">
     <img src="https://img.youtube.com/vi/MaBf3D1GvQA/maxresdefault.jpg" width="850" alt="Breathily demo video"/>
-  </a><br/>
-  <sub>▶️ <a href="https://www.youtube.com/watch?v=MaBf3D1GvQA">Watch the demo</a></sub>
+  </a>
+  <br/><sub>▶️ <a href="https://www.youtube.com/watch?v=MaBf3D1GvQA">Watch the demo</a></sub>
+  <br/>
+  <img src="imgs/portfolio/breathily_pipeline.png" width="850" alt="Clinical study data collection pipeline: depth image → skeleton tracking → chest region → segmented regions → VISION vs. spirometry curves"/><br/>
+  <sub>Clinical-study data-collection pipeline: depth + color → skeleton tracking → chest-region segmentation → segment-wise depth signals → Breathily vs. spirometer curves</sub>
 </p>
 
 Patients with ALS and other neuromuscular diseases often can't form a seal around a traditional spirometer mouthpiece, which makes standard pulmonary function testing impossible for them. We co-founded Breathily to make spirometry mouthpiece-free: **Intel RealSense depth cameras** capture chest-wall movement, and computer vision converts that movement into the full PFT panel (FVC, FEV1, PEF).
@@ -153,6 +156,29 @@ Patients with ALS and other neuromuscular diseases often can't form a seal aroun
 **Stack:** Intel RealSense · Cubemos · OpenCV · SciPy · Pixel2Mesh · CNN+LSTM (Keras)
 
 **Eval:** correlation coefficient, RMSE, and MAE against a paired spirometer in an **IRB-approved patient study at UCSF Pulmonary Function Lab**.
+
+**Hardware Setup**
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+<img src="imgs/portfolio/breathily_hardware_sketch.png" width="100%" alt="Initial hardware design sketches and component photos"/>
+
+<sub>Design — hand-drawn layout, Intel NUC and Arduino components</sub>
+
+</td>
+<td width="50%" valign="top">
+
+<img src="imgs/portfolio/breathily_3d_printed.png" width="100%" alt="Final 3D-printed Breathily enclosure"/>
+
+<sub>Build — final 3D-printed enclosure with camera post and screen recess</sub>
+
+</td>
+</tr>
+</table>
+
+The final system is a custom 3D-printed enclosure housing the **Intel RealSense** camera on an adjustable post, an **Intel NUC** mini-PC for vision processing, and an **Arduino-driven touchscreen** for technician control, with compartments for battery and storage. The rig was deployed at the UCSF Pulmonary Function Lab for the clinical study, seated alongside the reference spirometer.
 
 📂 [Repo](https://github.com/hengfranklin/Breathily)
 
