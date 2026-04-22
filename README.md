@@ -9,6 +9,7 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/hengfranklin/portfolio/blob/main/franklin_heng_resume.pdf">Resume</a> ·
   <a href="https://www.linkedin.com/in/franklinheng/">LinkedIn</a> ·
   <a href="https://scholar.google.com/citations?user=toxljCEAAAAJ">Google Scholar</a> ·
   <a href="mailto:heng.franklin@gmail.com">heng.franklin@gmail.com</a>
