@@ -1,11 +1,15 @@
 <h1 align="center">Hi, I'm Franklin 👋</h1>
 
 <p align="center">
-  <img src="imgs/banner_photo.jpeg" alt="banner" width="100%"/>
+  <img src="imgs/banner_photo_2.jpg" alt="banner" width="100%"/>
 </p>
 
 <p align="center">
   <b>CV and ML engineer based in NYC, building 0 to 1 systems across <i>healthcare</i>, <i>climate</i>, and <i>robotics</i>.</b>
+</p>
+
+<p align="center">
+  👉 My most up to date project portfolio lives at <a href="https://hengfranklin.github.io/projects/"><b>hengfranklin.github.io/projects</b></a>.
 </p>
 
 <p align="center">
